@@ -1,4 +1,5 @@
 import { categories } from './options/categoriesOptions';
+import './categories.styles.scss';
 
 const App = () => {
   return (
