@@ -1,10 +1,11 @@
-import CategoriesDirectory from './components/CategoriesDirectory/CategoriesDirectory';
+import { Routes, Route } from 'react-router-dom';
+import Home from './Pages/Home';
 
 const App = () => {
   return (
-    <>
-      <CategoriesDirectory/>
-    </>
+    <Routes>
+      <Route path='/' element={<Home/>} exact />
+    </Routes>
   );
 }
 
