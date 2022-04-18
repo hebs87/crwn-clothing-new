@@ -23,7 +23,12 @@ const NavBar = () => {
           >
             Shop
           </Link>
-
+          <Link
+            className='nav-link'
+            to='/login'
+          >
+            Log in
+          </Link>
         </div>
       </nav>
       <Outlet/>
