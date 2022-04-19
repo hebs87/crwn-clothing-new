@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import FormInput from '../FormInput/FormInput';
+import Button from '../Button/Button';
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth
@@ -96,7 +97,11 @@ const RegistrationForm = () => {
           required
         />
 
-        <button type='submit'>Register</button>
+        <Button
+          type='submit'
+        >
+          Register
+        </Button>
       </form>
     </div>
   );
