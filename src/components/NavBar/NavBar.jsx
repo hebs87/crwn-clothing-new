@@ -25,7 +25,7 @@ const NavBar = () => {
           </Link>
           <Link
             className='nav-link'
-            to='/login'
+            to='/auth'
           >
             Log in
           </Link>
