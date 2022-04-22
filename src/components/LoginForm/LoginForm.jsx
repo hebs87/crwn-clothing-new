@@ -59,6 +59,7 @@ const LoginForm = () => {
     const {user} = await signInWithGooglePopup();
     // Get existing userDocRef from Firestore, or create one if it does not exist
     await createUserDocumentFromAuth(user);
+    setCurrentUser(user);
   };
 
 
