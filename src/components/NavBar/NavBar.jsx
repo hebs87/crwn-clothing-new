@@ -9,8 +9,7 @@ const NavBar = () => {
   const {currentUser, setCurrentUser} = useContext(UserContext);
 
   const handleLogout = async () => {
-    const res = await logoutUser();
-    console.log(res);
+    await logoutUser();
     setCurrentUser(null);
   };
 
