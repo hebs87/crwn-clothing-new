@@ -22,10 +22,10 @@ const RegistrationForm = () => {
 
   const handleChange = e => {
     // Update relevant form field on change
-    const {id, value} = e.target;
+    const {name, value} = e.target;
     setFormFields({
       ...formFields,
-      [id]: value,
+      [name]: value,
     });
   };
 
@@ -67,6 +67,7 @@ const RegistrationForm = () => {
         <FormInput
           label='Display Name'
           id='displayName'
+          name='displayName'
           onChange={handleChange}
           value={displayName}
           type='text'
@@ -76,6 +77,7 @@ const RegistrationForm = () => {
         <FormInput
           label='Email'
           id='email'
+          name='email'
           onChange={handleChange}
           value={email}
           type='email'
@@ -84,7 +86,8 @@ const RegistrationForm = () => {
 
         <FormInput
           label='Password'
-          id='password'
+          id='register-password'
+          name='password'
           onChange={handleChange}
           value={password}
           type='password'
@@ -94,6 +97,7 @@ const RegistrationForm = () => {
         <FormInput
           label='Confirm Password'
           id='confirmPassword'
+          name='confirmPassword'
           onChange={handleChange}
           value={confirmPassword}
           type='password'

@@ -21,10 +21,10 @@ const LoginForm = () => {
 
   const handleChange = e => {
     // Update relevant form field on change
-    const {id, value} = e.target;
+    const {name, value} = e.target;
     setFormFields({
       ...formFields,
-      [id]: value,
+      [name]: value,
     });
   };
 
@@ -77,6 +77,7 @@ const LoginForm = () => {
         <FormInput
           label='Email'
           id='email'
+          name='email'
           onChange={handleChange}
           value={email}
           type='email'
@@ -86,6 +87,7 @@ const LoginForm = () => {
         <FormInput
           label='Password'
           id='password'
+          name='password'
           onChange={handleChange}
           value={password}
           type='password'
