@@ -32,9 +32,23 @@ const LoginForm = () => {
     e.preventDefault();
 
     try {
-      const response = await loginAuthUserWithEmailAndPassword(email, password)
+      await loginAuthUserWithEmailAndPassword(email, password);
       resetFormFields();
-    } catch (error) {}
+    } catch (error) {
+      switch (error.code) {
+        case 'auth/wrong-password':
+          alert('Incorrect password for email');
+          break;
+        case 'auth/user-not-found':
+          alert('No user associated with this email');
+          break;
+        default:
+          console.log(error);
+      }
+      if (error.code === 'auth/wrong-password') {
+        alert('Incorrect password for email');
+      }
+    }
   };
 
   const loginWithGoogle = async () => {
@@ -84,6 +98,7 @@ const LoginForm = () => {
           </Button>
 
           <Button
+            type='button'
             onClick={loginWithGoogle}
             buttonType='google'
           >
