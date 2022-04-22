@@ -1,6 +1,6 @@
 import { categories } from '../../options/categoriesOptions';
 import CategoryItem from '../CategoryItem/CategoryItem';
-import './CategoriesDirectory.scss';
+import './CategoriesDirectory.styles.scss';
 
 const CategoriesDirectory = () => {
   return (
