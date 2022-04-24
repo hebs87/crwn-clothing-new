@@ -27,12 +27,15 @@ const LoginForm = () => {
 
   const resetFormFields = () => setFormFields(defaultFormFields);
 
+  const redirectToHome = () => window.location.href = '/';
+
   const handleSubmit = async e => {
     e.preventDefault();
 
     try {
       await loginAuthUserWithEmailAndPassword(email, password);
       resetFormFields();
+      redirectToHome();
     } catch (error) {
       switch (error.code) {
         case 'auth/wrong-password':
@@ -53,6 +56,7 @@ const LoginForm = () => {
   const loginWithGoogle = async () => {
     // Get the user from the popup
     await signInWithGooglePopup();
+    redirectToHome();
   };
 
 

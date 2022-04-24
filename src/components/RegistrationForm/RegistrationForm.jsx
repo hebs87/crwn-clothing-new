@@ -18,6 +18,8 @@ const RegistrationForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const {displayName, email, password, confirmPassword} = formFields;
 
+  const redirectToHome = () => window.location.href = '/';
+
   const handleChange = e => {
     // Update relevant form field on change
     const {name, value} = e.target;
@@ -41,6 +43,7 @@ const RegistrationForm = () => {
       const {user} = await createAuthUserWithEmailAndPassword(email, password);
       await createUserDocumentFromAuth(user, {displayName});
       resetFormFields();
+      redirectToHome();
     } catch (error) {
       if (error.code === 'auth/email-already-in-use') {
         alert('Cannot create user, email already in use');
