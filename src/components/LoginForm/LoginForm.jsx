@@ -1,12 +1,10 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import {
   loginAuthUserWithEmailAndPassword,
   signInWithGooglePopup,
-  createUserDocumentFromAuth,
 } from '../../utils/firebase/firebase.utils';
 import FormInput from '../FormInput/FormInput';
 import Button from '../Button/Button';
-import { UserContext } from '../../contexts/User.context';
 import './LoginForm.styles.scss';
 
 const defaultFormFields = {
@@ -17,7 +15,6 @@ const defaultFormFields = {
 const LoginForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const {email, password} = formFields;
-  const {setCurrentUser} = useContext(UserContext);
 
   const handleChange = e => {
     // Update relevant form field on change
@@ -34,8 +31,7 @@ const LoginForm = () => {
     e.preventDefault();
 
     try {
-      const {user} = await loginAuthUserWithEmailAndPassword(email, password);
-      setCurrentUser(user);
+      await loginAuthUserWithEmailAndPassword(email, password);
       resetFormFields();
     } catch (error) {
       switch (error.code) {
@@ -56,10 +52,7 @@ const LoginForm = () => {
 
   const loginWithGoogle = async () => {
     // Get the user from the popup
-    const {user} = await signInWithGooglePopup();
-    // Get existing userDocRef from Firestore, or create one if it does not exist
-    await createUserDocumentFromAuth(user);
-    setCurrentUser(user);
+    await signInWithGooglePopup();
   };
 
 

@@ -1,11 +1,10 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import FormInput from '../FormInput/FormInput';
 import Button from '../Button/Button';
 import {
   createAuthUserWithEmailAndPassword,
-  createUserDocumentFromAuth
+  createUserDocumentFromAuth,
 } from '../../utils/firebase/firebase.utils';
-import { UserContext } from '../../contexts/User.context';
 import './RegistrationForm.styles.scss';
 
 const defaultFormFields = {
@@ -18,7 +17,6 @@ const defaultFormFields = {
 const RegistrationForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const {displayName, email, password, confirmPassword} = formFields;
-  const {setCurrentUser} = useContext(UserContext);
 
   const handleChange = e => {
     // Update relevant form field on change
@@ -42,7 +40,6 @@ const RegistrationForm = () => {
     try {
       const {user} = await createAuthUserWithEmailAndPassword(email, password);
       await createUserDocumentFromAuth(user, {displayName});
-      setCurrentUser(user);
       resetFormFields();
     } catch (error) {
       if (error.code === 'auth/email-already-in-use') {
@@ -76,7 +73,7 @@ const RegistrationForm = () => {
 
         <FormInput
           label='Email'
-          id='email'
+          id='register-email'
           name='email'
           onChange={handleChange}
           value={email}
